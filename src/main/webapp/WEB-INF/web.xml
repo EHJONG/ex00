@@ -10,18 +10,30 @@
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!-- ContextLoaderListener는 해당 웹 애플리케이션 구동 시 같이 동작한다. -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
+		<!-- org.springframework.web.servlet.DispatcherServlet 클래스는 스프링MVC의 구조에서 가장 핵심적인 역할을 하는 클래스이다. 
+		 내부적으로 웹 관련 처리의 준비작업을 진행하는데 이 때,사용하는 파일이 servelt-context.xml이다. -->
+		
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
+		
+		
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		

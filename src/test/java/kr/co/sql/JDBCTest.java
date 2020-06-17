@@ -22,12 +22,12 @@ public class JDBCTest {
 	@Test
 	public void testConnection() {		
 		try(Connection con = DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/book_ex?serverTimezone=Asia/Seoul&useSSL=false", 
+				"jdbc:mysql://localhost:3306/book?serverTimezone=Asia/Seoul&useSSL=false", 
 				"root",
 				"1234")) {			
 			log.info(con);
 			log.info("hello world !");
-		} catch(Exception e) {		
+		} catch(Exception e) {
 			fail(e.getMessage());			
 		}
 	}
