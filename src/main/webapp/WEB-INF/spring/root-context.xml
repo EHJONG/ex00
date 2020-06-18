@@ -25,15 +25,14 @@
 	</bean>
 
 
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id = "sqlSessionFactory" class = "org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
 
 
-	<!-- <mybatis-spring:scan base-package=""/> 태그의 base-package속성은 지정된 패키지의 
-		모든 MyBatis 관련 어노테이션을 찾아서 처리 한다. -->
-	<mybatis-spring:scan base-package="kr.co.mapper" />
+	<!-- <mybatis-spring:scan base-package=""/> 태그의  base-package속성은 지정된 패키지의 모든 MyBatis 관련 어노테이션을 찾아서 처리 한다.-->
+	<mybatis-spring:scan base-package="kr.co.mapper"/>
 
 	<!-- @Component를 스캔 하는 역할을 한다. -->
 	<context:component-scan
@@ -42,10 +41,7 @@
 	<!-- @Component를 스캔 하는 역할을 한다. -->
 
 
-	<context:component-scan
-		base-package="kr.co.exception" />
-	<context:component-scan
-		base-package="kr.co.controller"></context:component-scan>
+
 
 
 
