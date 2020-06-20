@@ -19,9 +19,9 @@ public interface BoardMapper {
 	public BoardVO read(int bno);
 	
 //	하나의 게시글 delete 역할
-	public void delete(int bno);
+	public boolean delete(int bno);
 	
 //	update
-	public void update(BoardVO board);
+	public boolean update(BoardVO board);
 
 }
