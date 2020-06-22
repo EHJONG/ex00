@@ -17,42 +17,39 @@ import kr.co.dto.SampleDTOList;
  */
 @Controller
 public class HomeController {
-	
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public @ResponseBody String home(@RequestParam(value = "name", required= false)String name,
-			@RequestParam(value = "age", required=false)int age) {
-		return "home";
+	public @ResponseBody String home(@RequestParam("age")int age, @RequestParam("name")String name) {
+		return age+" "+name;
 	}
-	
+
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	@ResponseBody
-	public String home2(@RequestParam(value = "idx", required= false)String[] idx) {
-		System.out.println("idx.length : "+idx.length);
-		for(int i =0; i<idx.length; i++) {
+	public String home2(@RequestParam(value = "idx", required = false) String[] idx) {
+		System.out.println("idx.length : " + idx.length);
+		for (int i = 0; i < idx.length; i++) {
 			System.out.println(idx[i]);
 		}
 		return "home2";
 	}
-	
+
 	@GetMapping("array")
 	@ResponseBody
-	public String array(@RequestParam(value = "ids", required = false)ArrayList<String> ids) {
-		System.out.println("ids.size() : "+ids.size());
-		for(int i =0; i<ids.size(); i++) {
+	public String array(@RequestParam(value = "ids", required = false) ArrayList<String> ids) {
+		System.out.println("ids.size() : " + ids.size());
+		for (int i = 0; i < ids.size(); i++) {
 			System.out.println(ids.get(i));
 		}
 		return ids.get(0);
 //		return "array";
 	}
-	
+
 	@GetMapping("dto")
 	@ResponseBody
-	public String dto(@RequestBody(required = false)SampleDTOList list) {
+	public String dto(@RequestBody(required = false) SampleDTOList list) {
 		System.out.println("called");
-		System.out.println("list : "+list);
+		System.out.println("list : " + list);
 		return "dto";
 	}
-	
-	
+
 }

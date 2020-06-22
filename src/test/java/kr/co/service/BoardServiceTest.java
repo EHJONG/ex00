@@ -52,7 +52,7 @@ public class BoardServiceTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void testUpdate() {
 		BoardVO board = service.get(3);
 		if(board==null) {
@@ -63,5 +63,11 @@ public class BoardServiceTest {
 		board.setContent("바뀐 내용");
 		service.modify(board);
 		log.info(board);
+	}
+	
+	@Test
+	public void testDelete() {
+		service.remove(3);
+		log.info("success");
 	}
 }
