@@ -3,12 +3,14 @@ package kr.co.controller;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.dto.SampleDTOList;
 
@@ -19,10 +21,17 @@ import kr.co.dto.SampleDTOList;
 public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public @ResponseBody String home(@RequestParam("age")int age, @RequestParam("name")String name) {
-		return age+" "+name;
+	public String home(@RequestParam("age")int age, @RequestParam("name")String name, RedirectAttributes rttr, Model model) {
+		rttr.addAttribute("name",name);
+		return "redirect:/re";
 	}
 
+	@GetMapping("re")
+	public @ResponseBody String re() {
+		System.out.println("re page");		
+		return "rePage";
+	}
+	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	@ResponseBody
 	public String home2(@RequestParam(value = "idx", required = false) String[] idx) {

@@ -51,4 +51,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	@PostMapping("/remove")
+	public String remove(@RequestParam("bno")int bno, RedirectAttributes rttr) {
+		log.info("remove.."+bno);
+		if(service.remove(bno)) {
+			rttr.addFlashAttribute("result","success_remove");
+		}
+		return "redirect:/board/list";
+	}
 }
